@@ -15,6 +15,7 @@ import { SocialMediaRoutingModule } from './social-media/social-media-routing.mo
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     SocialMediaRoutingModule,
   ],
