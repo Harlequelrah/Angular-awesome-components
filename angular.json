@@ -58,7 +58,7 @@
               {
                 "glob": "**/*",
                 "input": "src/assets/images",
-                "output":"assets/images"
+                "output": "assets/images"
               }
             ],
             "styles": [
@@ -80,7 +80,13 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,

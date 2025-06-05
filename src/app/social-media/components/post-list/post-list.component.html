@@ -1,2 +1,10 @@
 <h2>Posts</h2>
-<app-post-list-item *ngFor="let post of posts$ | async " [post]="post"></app-post-list-item>
+<!-- <app-post-list-item *ngFor="let post of posts$ | async " [post]="post"></app-post-list-item> -->
+@for(post of posts$ | async ; track post.id)
+{
+  <app-post-list-item [post]="post"></app-post-list-item>
+}
+
+@empty {
+  <p>There are not post here</p>
+}
