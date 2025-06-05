@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { postsResolver } from './resolvers/posts.resolver';
 
 const routes: Routes = [
-  { path: 'social-media', loadChildren: () => import('./social-media.module').then(m => m.SocialMediaModule) },
-  {path:'**', redirectTo: 'social-media', pathMatch: 'full'},
+  {
+    path: '',
+    component: PostListComponent,
+    resolve: {
+      posts: postsResolver
+    }
+  }
 ];
 
 @NgModule({

@@ -6,8 +6,6 @@ ul {
     }
 }
 
-.bg-mat-toolbar {
-    background-color: var(--mat-sys-primary-container);
-    border: 1px solid var(--mat-sys-outline-variant);
-    font: var(--mat-sys-body-large);
+mat-toolbar {
+    background-color: var(--mat-sys-primary);
 }

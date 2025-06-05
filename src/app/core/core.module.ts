@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
 
@@ -17,6 +18,10 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   exports: [
     HeaderComponent,
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class CoreModule { }
