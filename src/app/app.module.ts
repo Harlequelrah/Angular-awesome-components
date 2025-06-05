@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SocialMediaRoutingModule } from './social-media/social-media-routing.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SocialMediaRoutingModule } from './social-media/social-media-routing.mo
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SocialMediaRoutingModule,
