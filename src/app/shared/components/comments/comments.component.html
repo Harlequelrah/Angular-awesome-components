@@ -1,3 +1,13 @@
+
+<div class="comments-row">
+  <mat-form-field>
+    <mat-label>Laissez un commentaire</mat-label>
+    <input type="text" matInput [formControl]="commentCtrl">
+  </mat-form-field>
+    <button mat-icon-button  (click)="LeaveComment()">
+      <mat-icon>send</mat-icon>
+    </button>
+</div>
 @if(comments.length){
 <mat-list>
   <h2 matSubheader> Commentaires </h2>
