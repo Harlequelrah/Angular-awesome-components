@@ -1,8 +1,8 @@
 export class Comment {
 
     constructor(
-        id: number,
-        userId: number,
-        comment: string,
-        createdDate: string) { }
+        public id: number,
+        public userId: number,
+        public comment: string,
+        public createdDate: string) { }
 }
