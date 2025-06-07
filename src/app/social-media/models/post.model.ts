@@ -7,6 +7,7 @@ export class Post {
         public title: string,
         public createdDate: string,
         public content: string,
-        public comments: Comment[]
+        public comments: Comment[],
+        public imageUrl : string
     ) { }
 }
