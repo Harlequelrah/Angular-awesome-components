@@ -1,3 +1,20 @@
+@use "@angular/material" as mat;
+
 mat-list-item{
     border-bottom : thin solid #555
+}
+
+mat-form-field{
+    width:90%;
+}
+
+.comments-row{
+    display:flex;
+    border-top:  thin solid  #555;
+    padding-top : 10px;
+    justify-content : space-around;
+    align-items: center;
+}
+button{
+    color:var(--mat-sys-primary);
 }
