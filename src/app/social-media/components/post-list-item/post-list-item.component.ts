@@ -11,8 +11,9 @@ import { PostCommentedEvent } from '../../../core/types/postcommentedevent.type'
 export class PostListItemComponent {
   @Input() post!: Post;
   @Output() postCommented = new EventEmitter<PostCommentedEvent>();
+  tempUser = { firstName: 'maxime', lastName: 'DeGBOVI' }
   onNewComment(comment: string) {
-    const postCommentedEvent = {comment:comment,postId:this.post.id}
+    const postCommentedEvent = { comment: comment, postId: this.post.id }
     this.postCommented.emit(postCommentedEvent);
     console.log(comment);
   }
