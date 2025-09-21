@@ -25,16 +25,19 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class CommentsComponent implements OnInit {
-  onMouseLeave() {
-    this.listItemStyleAnimation = 'default';
+  onMouseLeave(index: number) {
+    this.animationStates[index] = 'default';
   }
-  onMouseEnter() {
-    this.listItemStyleAnimation = 'active';
+  onMouseEnter(index: number) {
+    this.animationStates[index] = 'active';
   }
-  listItemStyleAnimation: 'default' | 'active' = 'default';
+  animationStates: { [key: number]: 'default' | 'active' } = {};
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     this.commentCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(10)]);
+    for (let index in this.comments) {
+      this.animationStates[index] = 'default';
+    }
   }
   @Input() comments!: Comment[];
   @Output() newComment = new EventEmitter<string>();
