@@ -8,7 +8,7 @@
   </button>
 </div>
 @if(comments.length){
-<mat-list>
+<mat-list [@listItem]="listItemStyleAnimation" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
   <h2 matSubheader> Commentaires </h2>
   @for(comment of comments;track comment.id){
   <mat-list-item>
