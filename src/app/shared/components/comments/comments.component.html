@@ -8,13 +8,13 @@
   </button>
 </div>
 @if(comments.length){
-<mat-list>
+<mat-list @list>
   <h2 matSubheader> Commentaires </h2>
   @for(comment of comments;track comment.id;let i = $index){
   <mat-list-item [@listItem]="animationStates[i]" (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave(i)">
     <div class="item-container">
-      <span mat-line>{{comment.comment}}</span>
-      <span mat-line>{{comment.createdDate | timeAgo}}</span>
+      <span class="comment-text" mat-line>{{comment.comment}}</span>
+      <span class="comment-date" mat-line>{{comment.createdDate | timeAgo}}</span>
     </div>
 
   </mat-list-item>
