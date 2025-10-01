@@ -36,6 +36,9 @@
         <input matInput formControlName="confirm" type="text">
         <mat-error>{{getFormControlText(confirmEmailCtrl)}}</mat-error>
       </mat-form-field>
+      @if(showEmailError$|async){
+      <small class="error-text">Les mails ne correspondent pas </small>
+      }
     </div>
   </mat-card>
   }
@@ -61,11 +64,17 @@
       <mat-form-field appearance="fill">
         <mat-label>Mot de passe</mat-label>
         <input matInput formControlName="password" type="password">
+        <mat-error>{{getFormControlText(passwordCtrl)}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Confirmez votre mot de passe</mat-label>
         <input matInput formControlName="confirmPassword" type="password">
+        <mat-error>{{getFormControlText(confirmPasswordCtrl)}}</mat-error>
       </mat-form-field>
+      @if(showPasswordError$|async){
+      <small class="error-text">Les mots de passe ne correspondent pas </small>
+      }
+
     </div>
   </mat-card>
   <div class="actions-container">
@@ -79,9 +88,6 @@
     }
   </div>
 
-  <!-- <div class="spinner-container">
-
-  </div> -->
 
 
 

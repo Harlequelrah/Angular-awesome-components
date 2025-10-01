@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, startWith, tap } from 'rxjs';
 import { ComplexFormService } from '../../services/complex-form.service';
+import { validValidator } from '../../validators/valid.validator';
+import { confirmEqualValidator } from '../../validators/confirm-equal.validator';
 
 @Component({
   selector: 'app-complex-form',
@@ -23,6 +25,8 @@ export class ComplexFormComponent implements OnInit {
   loginInfoForm!: FormGroup;
   showEmailCtrl$!: Observable<boolean>;
   showPhoneCtrl$!: Observable<boolean>;
+  showEmailError$!: Observable<boolean>;
+  showPasswordError$!: Observable<boolean>;
   constructor(private formBuilder: FormBuilder, private complexFormService: ComplexFormService) { }
   ngOnInit(): void {
     this.initFormControls();
@@ -61,6 +65,12 @@ export class ComplexFormComponent implements OnInit {
       map(preference => preference === 'phone'),
       tap((showPhone) => this.setPhoneValidators(showPhone))
     );
+    this.showEmailError$ = this.emailForm.statusChanges.pipe(
+      map(status => status === 'INVALID' && this.emailCtrl.value && this.confirmEmailCtrl.value)
+    );
+    this.showPasswordError$ = this.loginInfoForm.statusChanges.pipe(
+      map(status => status === 'INVALID' && this.passwordCtrl.value && this.confirmPasswordCtrl.value && this.loginInfoForm.hasError('confirmEqual'))
+    );
   }
   private initFormControls(): void {
     this.personalInfoForm = this.formBuilder.group({
@@ -73,7 +83,11 @@ export class ComplexFormComponent implements OnInit {
     this.emailForm = this.formBuilder.group({
       email: this.emailCtrl,
       confirm: this.confirmEmailCtrl
-    });
+    }, {
+      validators: [confirmEqualValidator('email', 'confirm')],
+      updateOn: 'blur'
+    },
+    );
     this.phoneCtrl = this.formBuilder.control('');
 
     this.passwordCtrl = this.formBuilder.control('', Validators.required);
@@ -82,6 +96,9 @@ export class ComplexFormComponent implements OnInit {
       username: ['', Validators.required],
       password: this.passwordCtrl,
       confirmPassword: this.confirmPasswordCtrl
+    }, {
+      validators: [confirmEqualValidator('password', 'confirmPassword')],
+      updateOn: 'blur'
     });
 
   }
@@ -125,6 +142,9 @@ export class ComplexFormComponent implements OnInit {
     }
     else if (ctrl.hasError('pattern')) {
       return 'Le numéro de téléphone doit contenir 10 chiffres';
+    }
+    else if (ctrl.hasError('confirmEqual')) {
+      return 'Les champs ne correspondent pas';
     }
     else {
       return 'Ce champ contient une erreur';
