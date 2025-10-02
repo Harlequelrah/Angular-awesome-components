@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { SocialMediaRoutingModule } from './social-media/social-media-routing.module';
+import { ComplexFormRoutingModule } from './complex-form/complex-form-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import { SocialMediaRoutingModule } from './social-media/social-media-routing.mo
     SharedModule,
     AppRoutingModule,
     SocialMediaRoutingModule,
+    ComplexFormRoutingModule
   ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
