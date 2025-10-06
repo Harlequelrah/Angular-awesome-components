@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { SocialMediaRoutingModule } from './social-media/social-media-routing.module';
 import { ComplexFormRoutingModule } from './complex-form/complex-form-routing.module';
+import { ReactiveStateRoutingModule } from './reactive-state/reactive-state-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ComplexFormRoutingModule } from './complex-form/complex-form-routing.mo
     SharedModule,
     AppRoutingModule,
     SocialMediaRoutingModule,
-    ComplexFormRoutingModule
+    ComplexFormRoutingModule,
+    ReactiveStateRoutingModule
   ],
   providers: [
   ],
