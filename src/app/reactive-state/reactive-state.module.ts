@@ -5,6 +5,7 @@ import { ReactiveStateRoutingModule } from './reactive-state-routing.module';
 import { SingleCandidateComponent } from './components/single-candidate/single-candidate.component';
 import { CandidateListComponent } from './components/candidate-list/candidate-list.component';
 import { CandidateService } from './services/candidate.service';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CandidateService } from './services/candidate.service';
   ],
   imports: [
     CommonModule,
-    ReactiveStateRoutingModule
+    ReactiveStateRoutingModule,
+    SharedModule
   ], providers: [
     CandidateService
   ]
